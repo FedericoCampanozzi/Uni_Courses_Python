@@ -1,9 +1,5 @@
-# Import Path of RemoteData
-#import sys
-#for p in sys.path:
-#    print( p )
-#import sys
-#sys.path.append('C:/Users/Federico/Desktop/UNI-PROJECT/DataIntensive/DataIntensive/RemoteData')
+import sys
+sys.path.append('../RemoteData')
 
 import RemoteData
 RemoteData.RetriveDataFrom("https://git.io/fhxQh", "purchases_data.zip")
