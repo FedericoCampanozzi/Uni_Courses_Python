@@ -1,1 +1,3 @@
 MetodiNumerici/__pycache__/
+*.csv
+__pycache__
