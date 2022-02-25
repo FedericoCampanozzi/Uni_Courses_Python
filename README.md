@@ -1,4 +1,7 @@
 Corsi :
-# Data Intensive
-# Metodi Numerici
-# Visione Artificiale
+
+**Data Intensive**
+
+**Metodi Numerici**
+
+**Visione Artificiale**
