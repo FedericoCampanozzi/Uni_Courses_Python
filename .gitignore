@@ -2,3 +2,5 @@ MetodiNumerici/__pycache__/
 *.csv
 __pycache__
 data
+.ipynb_checkpoints
+.gitignore.bak
