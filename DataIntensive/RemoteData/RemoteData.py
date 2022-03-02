@@ -10,8 +10,5 @@ def RetriveDataFrom(remotePath, fileName):
         # apri il file zip ed estrai tutto il contenuto nella directory corrente
         with ZipFile("purchases_data.zip") as f:
             f.extractall("data")
-            
         # muovo purchases_data.zip nella cartella data
-        #os.rename("purchases_data.zip", "data/purchases_data.zip")
         os.replace(fileName, "data/" + fileName)
-        #shutil.move("purchases_data.zip", "data/purchases_data.zip")

@@ -1,5 +1,5 @@
-import sys
-sys.path.append('../RemoteData')
+#import sys
+#sys.path.append('../RemoteData')
 
 import RemoteData
 RemoteData.RetriveDataFrom("https://git.io/fhxQh", "purchases_data.zip")
