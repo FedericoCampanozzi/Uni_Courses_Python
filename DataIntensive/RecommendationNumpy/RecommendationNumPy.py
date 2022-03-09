@@ -1,15 +1,17 @@
-import sys
-sys.path.append('../RemoteData')
-
-import RemoteData
 import numpy as np
 import csv
+import os.path
 
-RemoteData.RetriveDataFrom("https://git.io/fhxQh", "purchases_data.zip") # Scarico i dati che mi servono per l'elaborazione
-
-with open("data/users.csv", "r") as f:
+if not os.path.exists("purchases_data.zip"):
+    from urllib.request import urlretrieve
+    urlretrieve("https://git.io/fhxQh", "purchases_data.zip")
+    from zipfile import ZipFile
+    with ZipFile("purchases_data.zip") as f:
+        f.extractall()
+        
+with open("users.csv", "r") as f:
     users = {int(uid): name for uid, name in csv.reader(f, delimiter=";")} # Mappa id utente => nome utente
-with open("data/items.csv", "r") as f:
+with open("items.csv", "r") as f:
     items = {int(iid): name for iid, name in csv.reader(f, delimiter=";")} # Mappa id prodotto => nome prodotto
 
 N = 20 # Numero di suggerimenti
@@ -27,7 +29,7 @@ print(f"{len(users)} utenti, {len(items)} prodotti")
 # 0 altrimenti ===> np.zeros(shape della matrice utenti x prodotti) 
 purchases = np.zeros((len(users), len(items)), dtype=int)
 
-with open("data/purchases-2000.csv", "r") as f:
+with open("purchases-2000.csv", "r") as f:
     for uid, iid in csv.reader(f, delimiter=";"):
         purchases[user_indices[int(uid)], item_indices[int(iid)]] = 1
 
@@ -41,7 +43,7 @@ suggestions = (interest_ranking < N).astype(int) # applichiamo un filtro
 # zeros_like => crea una matrice della stessa shape della m. passata come argomento
 purchases_updated = np.zeros_like(purchases) # oppure np.zeros(purchases.shape)
 
-with open("data/purchases-2014.csv", "r") as f:
+with open("purchases-2014.csv", "r") as f:
     for uid, iid in csv.reader(f, delimiter=";"):
         purchases_updated[user_indices[int(uid)], item_indices[int(iid)]] = 1
 

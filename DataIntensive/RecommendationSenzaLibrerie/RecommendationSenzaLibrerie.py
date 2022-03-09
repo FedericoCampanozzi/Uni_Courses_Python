@@ -1,29 +1,31 @@
-import sys
-sys.path.append('../RemoteData')
-
-import RemoteData
-RemoteData.RetriveDataFrom("https://git.io/fhxQh", "purchases_data.zip")
-
 # Modello con formulazione base di un modello di similarita'
+import os
 import csv
 N = 20
 
+if not os.path.exists("purchases_data.zip"):
+    from urllib.request import urlretrieve
+    urlretrieve("https://git.io/fhxQh", "purchases_data.zip")
+    from zipfile import ZipFile
+    with ZipFile("purchases_data.zip") as f:
+        f.extractall()
+
 # Reading data ==> csv file
-with open("data/purchases-2000.csv", "r") as f:
+with open("purchases-2000.csv", "r") as f:
     purchases = set(
         (int(uid), int(iid))
         for uid, iid
         in csv.reader(f, delimiter=";")
     )
 
-with open("data/users.csv", "r") as f:
+with open("users.csv", "r") as f:
     users = {
         int(uid): name
         for uid, name
         in csv.reader(f, delimiter=";")
     }
 
-with open("data/items.csv", "r") as f:
+with open("items.csv", "r") as f:
     items = {int(iid): name for iid, name in csv.reader(f, delimiter=";")}
 
 purchases_by_user = {}
@@ -72,7 +74,7 @@ def suggest(uid):
 
 suggestions_by_user = {uid: suggest(uid) for uid in users.keys()}
 
-with open("data/purchases-2014.csv", "r") as f:
+with open("purchases-2014.csv", "r") as f:
     purchases_updated = set(
         (int(uid), int(iid))
         for uid, iid
