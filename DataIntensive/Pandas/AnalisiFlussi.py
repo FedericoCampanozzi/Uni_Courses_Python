@@ -13,13 +13,13 @@ population = data["population"]
 area = data["area"]
 
 
-print(f"\n1a - il numero di abitanti del 5° stato in ordine alfabetico (California) : {population[4]}")
-print(f"1b - i nomi degli ultimi tre stati in ordine alfabetico : {states[-3:]}")
-print(f"1c - il numero di abitanti in Florida (senza sapere a priori la sua posizione) : {population[states == 'Florida'][0]}")
-print(f"1d - i nomi degli stati con almeno 20 milioni di abitanti : {states[population >= 2e7]}")
-print(f"1e - il numero totale di abitanti in tutti gli stati : {population.sum()}")
-print(f"1f - il nome dello stato con meno abitanti : {states[population == population.min()][0]}")
-print(f"1g - il nome dello stato con più abitanti : {states[population == population.max()][0]}")
+print(f"\n\n1a - il numero di abitanti del 5° stato in ordine alfabetico (California) : {population[4]}")
+print(f"\n1b - i nomi degli ultimi tre stati in ordine alfabetico : {states[-3:]}")
+print(f"\n1c - il numero di abitanti in Florida (senza sapere a priori la sua posizione) : {population[states == 'Florida'][0]}")
+print(f"\n1d - i nomi degli stati con almeno 20 milioni di abitanti : {states[population >= 2e7]}")
+print(f"\n1e - il numero totale di abitanti in tutti gli stati : {population.sum()}")
+print(f"\n1f - il nome dello stato con meno abitanti : {states[population == population.min()][0]}")
+print(f"\n1g - il nome dello stato con più abitanti : {states[population == population.max()][0]}")
 
 population = pd.Series(data["population"], index=data["states"])
 
@@ -34,10 +34,10 @@ area        = pd.Series(data["area"],        index=data["states"])
 other_state = pd.Series(data["other_state"], index=data["states"])
 from_abroad = pd.Series(data["from_abroad"], index=data["states"])
 
-print(f"\n3a - la densità di popolazione dello stato più piccolo : {density[area.idxmin()]}")
-print(f"3b - il numero di stati la cui popolazione è superiore al milione di abitanti : {len(states[population >= 1e6])}")
-print(f"3c - il totale della popolazione degli stati sulla costa ovest (usare lista west_coast definita sopra) : {population[west_coast].sum()}")
-print(f"3d - la densità media degli stati con almeno 10 milioni di abitanti : {density[population > 1e7].mean()}")
+print(f"\n\n3a - la densità di popolazione dello stato più piccolo : {density[area.idxmin()]}")
+print(f"\n3b - il numero di stati la cui popolazione è superiore al milione di abitanti : {len(states[population >= 1e6])}")
+print(f"\n3c - il totale della popolazione degli stati sulla costa ovest (usare lista west_coast definita sopra) : {population[west_coast].sum()}")
+print(f"\n3d - la densità media degli stati con almeno 10 milioni di abitanti : {density[population > 1e7].mean()}")
 
 census = pd.DataFrame({
     "population": population,
@@ -47,20 +47,26 @@ census = pd.DataFrame({
 
 state_to_state = pd.DataFrame(data["state_to_state"], index=data["states"], columns=data["states"])
 
-print(f"\n4a - la superficie dello stato più grande : {census['area'].idxmax()}")
-print(f"4b -il numero totale di persone emigrate dall'Arizona ad un altro stato : {state_to_state['Arizona'].sum()}")
-print(f"4c - la densità media degli stati con almeno 10 milioni di abitanti : {state_to_state.sum(axis=1).idxmin()}")
+print(f"\n\n4a - la superficie dello stato più grande : {census['area'].idxmax()}")
+print(f"\n4b -il numero totale di persone emigrate dall'Arizona ad un altro stato : {state_to_state['Arizona'].sum()}")
+print(f"\n4c - la densità media degli stati con almeno 10 milioni di abitanti : {state_to_state.sum(axis=1).idxmin()}")
+
+census["density"] = census["population"] / census["area"]
+
+print(f"\n\n5a - la superficie della California : {census.loc['California', 'area']}")
+print(f"\n5b - la popolazione (colonna 0) del 13° stato nella tabella : {census.iloc[12, 0]}")
+print(f"\n5c - la densità di popolazione dello stato con superficie maggiore : {census.loc[census['area'].idxmax(), 'density']}")
+print(f"\n5d - la popolazione totale degli stati con nome che inizia per M :\ncls{census.loc['M': 'N', 'population']}")
+print(f"\n5e - la superficie complessiva degli stati con almeno 20 milioni di abitanti : {census.loc[census['population'] > 2e7, 'area'].sum()}")
+print("\n5f - la popolazione media degli stati con almeno l'1% di popolazione immigrato dall'estero (from_abroad) nell'ultimo anno : " +
+      f"{census.loc[census['from_abroad'] / census['population'] >= 0.01, 'population'].mean()}")
+print("\n5g - la superficie totale dei 5 stati con densità di popolazione minore :" +
+      f"{census.sort_values('density').head(5)['area'].mean()}")
+print("\n5h - la popolazione (colonna 0) del 3° stato con superficie maggiore : " +
+      f"{census.sort_values('area', ascending=False).iloc[2, 0]}")
 
 
-print(f"\n5a - la superficie della California : {census['area']['California']}")
-print(f"5b - la popolazione (colonna 0) del 13° stato nella tabella : {census.iloc[12, 0]}")
-print(f"5c - la popolazione totale degli stati con nome che inizia per M : {census.loc['N': 'M', 'population']}")
-print(f"5d - la superficie complessiva degli stati con almeno 20 milioni di abitanti : {census.loc[census['population'] > 2e7, 'area'].sum()}")
-print(f"5e - la popolazione media degli stati con almeno l'1% di popolazione immigrato dall'estero (from_abroad) nell'ultimo anno : {state_to_state.sum(axis=1).idxmin()}")
-print(f"5f - la superficie totale dei 5 stati con densità di popolazione minore : {state_to_state.sum(axis=1).idxmin()}")
-print(f"5g - la popolazione (colonna 0) del 3° stato con superficie maggiore : {state_to_state.sum(axis=1).idxmin()}")
-
-
+# Examples
 population_mln = population / 1e6
 plt.figure(figsize=(20, 4))
 population_mln.plot.bar();
