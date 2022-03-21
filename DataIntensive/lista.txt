@@ -1,4 +1,5 @@
-1 - Es + Extra
-2 - Solo Es
-3 - Solo Es No Extra
-4 - Solo Es + Extra
+1 - RecommendationSenzaLibrerie- Es + Extra
+2 - RecommendationNumpy - Solo Es
+3 - Pandas - Solo Es No Extra
+4 - Pandas2 - Solo Es + Extra
+5 - LinearRegression - Solo Es + Extra
