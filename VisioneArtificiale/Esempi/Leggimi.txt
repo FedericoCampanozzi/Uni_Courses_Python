@@ -1,0 +1,4 @@
+1) Copiare questi file in una cartella raggiungibile da Jupyter 
+(eseguendo Jupyter dovreste capire qual è la sua cartella di lavoro, di solito sotto la home dell'utente).
+
+2) Aprire il notebook esempi.ipynb da Jupyter ed eseguirne le celle.
