@@ -1,5 +1,6 @@
-1 - RecommendationSenzaLibrerie- Es + Extra
-2 - RecommendationNumpy - Solo Es
-3 - Pandas - Solo Es No Extra
-4 - Pandas2 - Es + Extra
-5 - LinearRegression - Es + Extra
+01 - RecommendationSenzaLibrerie- Es + Extra
+02 - RecommendationNumpy - Solo Es
+03 - Pandas - Solo Es No Extra
+04 - Pandas2 - Es + Extra
+05 - LinearRegression - Es + Extra
+06 - NonLinearRegression - Solo Es No Extra
