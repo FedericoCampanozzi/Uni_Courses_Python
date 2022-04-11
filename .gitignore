@@ -7,4 +7,4 @@ __pycache__
 *.npz
 *.zip
 *.gz
-.catboost_info
+catboost_info
