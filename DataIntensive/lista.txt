@@ -5,4 +5,4 @@
 05.LinearRegression - Es + Extra
 06.NonLinearRegression - Solo Es No Extra
 07.NonLinearRegression - Solo Es No Extra
-08.AlberiDiRegressione - Es + Extra
+08.AlberiDiRegressione - Es
