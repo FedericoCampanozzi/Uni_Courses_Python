@@ -6,4 +6,6 @@
 06.NonLinearRegression - Solo Es
 07.NonLinearRegression - Solo Es
 08.AlberiDiRegressione - Solo Es
-09.SeminarioTransformer - Solo Es
+09.SeminarioTransformer -
+11.SeminarioCNN
+12.Recommendation - Solo Es
