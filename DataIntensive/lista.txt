@@ -11,3 +11,4 @@
 11.Recommendation - Solo Es
 12.PredizioneIndiceBorsa - Solo Es
 13.ClassificazioneCelluleBM - Solo Es
+14.IntroduzioneNLP - Solo Es
