@@ -10,3 +10,4 @@ __pycache__
 catboost_info
 *.weights
 *.txt.bak
+*.data
