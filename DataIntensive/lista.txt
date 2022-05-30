@@ -13,3 +13,4 @@
 13.ClassificazioneCelluleBM - Solo Es
 14.IntroduzioneNLP - Solo Es
 15.RetiNeuraliKeras - Solo Es
+16.SeminarioWebAppFlask
