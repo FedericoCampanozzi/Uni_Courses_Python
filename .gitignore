@@ -11,3 +11,7 @@ catboost_info
 *.weights
 *.txt.bak
 *.data
+__MACOSX
+UCI HAR Dataset
+*.zip
+model.tflite
